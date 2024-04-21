@@ -1,23 +1,21 @@
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import colors from "../constants/colors";
 import { Feather } from "@expo/vector-icons";
+import KeyboardAvoidingViewContainer from "../components/KeyboardAvoidingViewContainer";
 
 export default function ChatScreen() {
   return (
-    <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <TextInput style={styles.textbox} placeholder="Type a message.." />
-        <TouchableOpacity styles={styles.sendButton}>
-          <Feather name="send" size={18} color="black" />
-        </TouchableOpacity>
+    <KeyboardAvoidingViewContainer>
+      <View style={styles.container}>
+        <View style={styles.messagesContainer} />
+        <View style={styles.inputContainer}>
+          <TextInput style={styles.textbox} placeholder="Type a message.." />
+          <TouchableOpacity style={styles.sendButton}>
+            <Feather name="send" size={16} color="white" />
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </KeyboardAvoidingViewContainer>
   );
 }
 
@@ -32,11 +30,20 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   sendButton: {
-    backgroundColor: colors.primary,
     width: 35,
     height: 35,
+    borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 50,
+    borderWidth: 2,
+    backgroundColor: colors.primary,
+    borderColor: colors.primary,
+  },
+  textbox: {
+    flex: 1,
+  },
+  messagesContainer: {
+    flex: 1,
   },
 });
